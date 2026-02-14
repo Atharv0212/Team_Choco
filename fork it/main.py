@@ -40,8 +40,10 @@ def recommend(data: RecommendRequest):
     # 2️⃣ Blend or single mode
     if data.mode == "blend":
         target_vector = ve.centroid(vectors)
-    else:
-        target_vector = vectors[0]
+
+    elif data.mode == "single":
+        target_vector = vectors[0]  # only first flavor used
+
 
     # 3️⃣ Fetch recipes
     recipes = get_recipes()

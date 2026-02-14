@@ -28,12 +28,19 @@ export function ResultsView({ backendData }: ResultsViewProps) {
             Ranked by molecular similarity and taste compatibility
           </p>
         </motion.div>
+        {/* Empty State */}
+        {recipes.length === 0 && (
+          <div className="text-center text-slate-400 py-20">
+            No matching recipes found.
+          </div>
+        )}
+
 
         {/* Results Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {recipes.map((recipe: any, index: number) => {
 
-            const similarityPercent = Math.round(recipe.similarity_score * 100);
+            const similarityPercent = Math.round((recipe.similarity_score || 0) * 100);
 
             return (
               <motion.div
