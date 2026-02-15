@@ -1,7 +1,8 @@
+import React from "react";
 import { InputConsole } from '../components/InputConsole';
 import { ResultsView } from '../components/ResultsView';
 import { BackToTop } from '../components/BackToTop';
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import { Sparkles } from 'lucide-react';
 import { useState } from 'react';
 
@@ -58,8 +59,15 @@ export function ExplorePage() {
       {/* Search Console */}
       <InputConsole onSearch={handleSearch} />
 
+      {/* Error message */}
+      {backendData?.error && (
+        <div className="max-w-2xl mx-auto px-6 py-8 text-center">
+          <p className="text-red-400 font-medium">{backendData.error}</p>
+        </div>
+      )}
+
       {/* Results Section */}
-      {backendData && (
+      {backendData && !backendData.error && (
         <ResultsView backendData={backendData} />
       )}
     </div>

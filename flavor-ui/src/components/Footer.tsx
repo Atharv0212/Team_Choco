@@ -1,4 +1,3 @@
-import { motion, AnimatePresence } from "framer-motion";
 import { Github, Twitter, Mail, Heart } from 'lucide-react';
 import { Link } from 'react-router';
 

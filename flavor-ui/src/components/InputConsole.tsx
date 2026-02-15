@@ -1,14 +1,3 @@
-import { motion, AnimatePresence } from "framer-motion";
-import {
-  AlertCircle,
-  DollarSign,
-  X,
-  Loader2,
-  Sparkles,
-  Info,
-  Shuffle,
-  Search as SearchIcon,
-} from "lucide-react";
 import { useState } from "react";
 
 const COMMON_ALLERGENS = [
@@ -40,7 +29,6 @@ export function InputConsole({ onSearch }: InputConsoleProps) {
 
   const [exclusions, setExclusions] = useState<string[]>([]);
   const [currentExclusion, setCurrentExclusion] = useState("");
-  const [exclusionError, setExclusionError] = useState("");
 
   const [budget, setBudget] = useState("no-preference");
   const [isSearching, setIsSearching] = useState(false);
@@ -73,20 +61,16 @@ export function InputConsole({ onSearch }: InputConsoleProps) {
   const addExclusion = () => {
     const trimmed = currentExclusion.trim();
     if (!trimmed) {
-      setExclusionError("Please enter an ingredient");
       return;
     }
     if (exclusions.map(a => a.toLowerCase()).includes(trimmed.toLowerCase())) {
-      setExclusionError("Already excluded");
       return;
     }
     if (!validateExclusion(trimmed)) {
-      setExclusionError("Please enter a valid food allergen");
       return;
     }
     setExclusions([...exclusions, trimmed]);
     setCurrentExclusion("");
-    setExclusionError("");
   };
 
   const removeExclusion = (index: number) => {

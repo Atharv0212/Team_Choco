@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { FlavorOrbitVisualization } from './FlavorOrbitVisualization';
 import { ChevronDown } from 'lucide-react';
 import { Link } from 'react-router';
